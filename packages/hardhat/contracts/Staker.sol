@@ -27,7 +27,7 @@ contract Staker {
   // After some `deadline` allow anyone to call an `execute()` function
   //  It should either call `exampleExternalContract.complete{value: address(this).balance}()` to send all the value
   function execute() {
-    require()
+    require(timeLeft() == 0 && address(this).balance >= 1 ether)
     exampleExternalContract.complete{ value: address(this).balance }();
   }
 
