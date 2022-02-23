@@ -28,17 +28,18 @@ contract Staker {
   //  It should either call `exampleExternalContract.complete{value: address(this).balance}()` to send all the value
   function execute() {
     require()
-    exampleExternalContract.complete{value: address(this).balance}();
+    exampleExternalContract.complete{ value: address(this).balance }();
   }
 
 
   // if the `threshold` was not met, allow everyone to call a `withdraw()` function
 
 
+
   // Add a `withdraw(address payable)` function lets users withdraw their balance
   function withdraw(address payable staker) {
     require(balances[msg.sender] > 0);
-    require();
+    require(timeLeft() == 0 && address(this).balance < 1 ether);
     // withdraw assets
   }
 
