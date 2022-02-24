@@ -4,8 +4,11 @@ contract ExampleExternalContract {
 
   bool public completed;
 
+  event Completed();
+
   function complete() public payable {
     completed = true;
+    emit Completed();
   }
 
 }
