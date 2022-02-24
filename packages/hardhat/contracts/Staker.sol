@@ -21,7 +21,7 @@ contract Staker {
   mapping ( address => uint256 ) public balances;
   uint256 public constant threshold = 1 ether;
   uint256 public deadline = block.timestamp + 90 seconds;
-  bool openForWithdraw;
+  //bool openForWithdraw;
 
   event Stake(address staker, uint256 amount);
   event Withdrawn(address staker, uint256 amount);
@@ -37,6 +37,7 @@ contract Staker {
   //  It should either call `exampleExternalContract.complete{value: address(this).balance}()` to send all the value
   function execute() public notCompleted {
     require(block.timestamp > deadline, "Deadline not reached");
+    require(address(this).balance >= 1 ether, "Not enough eth to execute");
     exampleExternalContract.complete{ value: address(this).balance }();
     emit Execute(block.timestamp);
   }
